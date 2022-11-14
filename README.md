@@ -1,0 +1,2 @@
+- [Design doc](https://docs.google.com/document/d/1mefy54LJFRIH73Aw7V_R9Xm2GmEGeyJ_FRjtXffYU38)
+- [Mastodon thread](https://androiddev.social/@zachklipp/109326781860500334)
