@@ -22,7 +22,12 @@ kotlin {
     }
     
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation("org.jetbrains.compose.runtime:runtime:1.2.1")
+                api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
@@ -30,7 +35,11 @@ kotlin {
         }
         val androidMain by getting
         val androidTest by getting
-        val iosX64Main by getting
+        val iosX64Main by getting {
+            dependencies {
+                api("org.jetbrains.kotlinx:kotlinx-coroutines-core-iosarm64:1.6.4")
+            }
+        }
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting
         val iosMain by creating {
