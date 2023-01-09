@@ -4,7 +4,8 @@ Simple library for observing Jetpack Compose's snapshot state in your SwiftUI vi
 
 ## Usage
 
-Put `SnapshotBridge.kt` into your Kotlin iOS source set, `ComposeStateObserver.swift` into your
+Put [`SnapshotBridge.kt`](/shared/src/iosMain/kotlin/com/zachklipp/kmpswiftuitest/SnapshotBridge.kt) into your
+Kotlin iOS source set, [`ComposeStateObserver.swift`](/iosApp/iosApp/ComposeStateObserver.swift) into your
 Swift codebase that consumes your Kotlin code, and then just call `ComposeStateObserver` from your
 SwiftUI views. Any snapshot state objects read in the closure passed to `ComposeStateObserver` will
 be tracked and the body of the `ComposeStateObserver` will re-render when those objects are changed.
