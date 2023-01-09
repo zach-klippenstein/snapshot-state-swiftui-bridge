@@ -5,11 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.Snapshot
 
-abstract class SwiftObservableObject {
-    abstract fun registerWillChangeObserver(block: () -> Unit): () -> Unit
-}
-
-class Greeting : SwiftObservableObject() {
+class Greeting {
     private val platform: Platform = getPlatform()
 
     private val _salutation = mutableStateOf("Hello")
@@ -23,15 +19,5 @@ class Greeting : SwiftObservableObject() {
     fun reset() {
         salutation = "Hello"
         name = platform.name
-    }
-
-    /** For iOS */
-    override fun registerWillChangeObserver(block: () -> Unit): () -> Unit {
-        val handle = Snapshot.registerApplyObserver { applied, _ ->
-            if (_salutation in applied || _name in applied) {
-                block()
-            }
-        }
-        return handle::dispose
     }
 }

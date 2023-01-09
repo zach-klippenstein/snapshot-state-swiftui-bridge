@@ -3,15 +3,11 @@ import shared
 
 @main
 struct iOSApp: App {
-    @StateObject private var greeting = SnapshotStateObservableObject(Greeting())
-    
-    init() {
-        bootstrapSnapshotBridge()
-    }
+    @State private var greeting = Greeting()
     
 	var body: some Scene {
 		WindowGroup {
-            ContentView(greeting: greeting.wrappedObject)
+            ContentView(greeting: greeting)
 		}
 	}
 }

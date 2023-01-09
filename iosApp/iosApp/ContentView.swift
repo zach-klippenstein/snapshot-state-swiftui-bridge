@@ -2,25 +2,23 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
-    @ObservedObject var greeting: SnapshotStateObservableObject<Greeting>
-
-    init(greeting: Greeting) {
-        self.greeting = SnapshotStateObservableObject(greeting)
-    }
+    let greeting: Greeting
 
 	var body: some View {
-        VStack{
-            Text(greeting.greeting)
-            Text("Salutation: \(greeting.salutation)")
-            TextField(text: $greeting.salutation, label: { Text("Salutation") })
-            Text("Name: \(greeting.name)")
-            TextField(text: $greeting.name, label: { Text("Name") })
-            Button {
-                withAnimation {
-                    greeting.wrappedObject.reset()
+        ComposeStateObserver {
+            VStack {
+                Text(greeting.greeting)
+                Text("Salutation: \(greeting.salutation)")
+                TextField(text: bindingFor(greeting, \.salutation), label: { Text("Salutation") })
+                Text("Name: \(greeting.name)")
+                TextField(text: bindingFor(greeting, \.name), label: { Text("Name") })
+                Button {
+                    withAnimation {
+                        greeting.reset()
+                    }
+                } label: {
+                    Text("Reset")
                 }
-            } label: {
-                Text("Reset")
             }
         }
 	}
